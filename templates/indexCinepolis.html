@@ -1,0 +1,12 @@
+{% extends 'layoutCinepolis.html' %}
+
+{% block content %}
+
+<input type="text" name="salida" readonly value="{{ datos.total }}">
+<label>Nombre cliente: {{ datos.nombre }}</label><br>
+<label>Cant. Compradores: {{ datos.cantCompradores }}</label><br>
+<label>Cant. Boletos: {{ datos.cantidadBoletos }}</label><br>
+<label>Total a pagar: {{ datos.total }}</label><br>
+<label>Descuento aplicado: {{ datos.descuento }}%</label>
+
+{%endblock%}
