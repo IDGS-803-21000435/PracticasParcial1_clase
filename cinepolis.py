@@ -40,15 +40,6 @@ def funcion():
             
             
             return render_template("indexCinepolis.html", datos = datos)
-            
-        #     return '''
-        #         <label>Nombre cliente: {x}</label><br>
-        #         <label>Cant. Compradores: {y}</label><br>
-        #         <label>Cant. Boletos: {t}</label><br>
-        #         <label>Tarjeta: {u}</label><br>
-        #         <label>Total a pagar: {g} </label><br>
-        #         <label>Descuento aplicado: {z}</label>
-        # '''.format(x = nombre, y = cantCompradores, t = cantBoletos, u = tarjeta, g = total, z = descuento)
         else:
             return "<h3>No puede comprar mas de 7 boletos por cliente, lo sentimos</h3>"
     else:

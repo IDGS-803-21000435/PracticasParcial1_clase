@@ -1,0 +1,51 @@
+{% extends 'layoutDistancia.html' %}
+
+{% block content %}
+
+{% import "_macroDistancia.html" as macros %}
+<h1 class="m-3" style="text-align: center;">
+    Calcular Distancia
+</h1>
+
+<form action="/calcularDistancia" method="post">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title text-center">Primer punto</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row jus">
+                        <div class="col">
+                            {{macros.render_field(form.x1)}}
+                        </div>
+                        <div class="col">
+                            {{macros.render_field(form.y1)}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title text-center">Segundo punto</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row jus">
+                        <div class="col">
+                            {{macros.render_field(form.x2)}}
+                        </div>
+                        <div class="col">
+                            {{macros.render_field(form.y2)}}
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <input class="btn btn-dark m-3" type="submit" name="btn1" value="calcular">
+</form>
+
+<h2 class="text-center m-3">R = {{resultado}} </h2>
+{%endblock%}
