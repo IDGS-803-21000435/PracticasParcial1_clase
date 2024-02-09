@@ -1,0 +1,141 @@
+{% extends 'layoutResistencia.html' %}
+
+{% block content %}
+
+{% import "_macroResistencia.html" as miMacro %}
+<h1 class="m-3" style="text-align: center;">
+    Resistencia
+</h1>
+
+<div class="row">
+    <form action="/calcular" method="post">
+        <div class="row p-2">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title text-center">Primera Banda</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="row justify-content-center">
+                            <div class="col">
+                                {{miMacro.render_field(form.color1)}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title text-center">Segunda Banda</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="row justify-content-center">
+                            <div class="col">
+                                {{miMacro.render_field(form.color2)}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title text-center">Tercera Banda</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="row justify-content-center">
+                            <div class="col">
+                                {{miMacro.render_field(form.color3)}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row p-2">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title text-center">Tolerancia</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="row justify-content-center">
+                            <div class="col">
+                                {{miMacro.render_radioB(form.radio)}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input class="btn btn-dark m-3" type="submit" name="btn1" value="calcular">
+    </form>
+</div>
+<div class="row m-5">
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Color 1</td>
+                <td>Color 2</td>
+                <td>Color 3</td>
+                <td>Tolerancia</td>
+                <td>Valor</td>
+                <td>Val. Max.</td>
+                <td>Val. Min.</td>
+            </tr>
+        </thead>
+        <tbody>
+            <style>
+                .color-black {
+                    background-color: black !important; 
+                    color: white !important;
+                }
+                .color-brown {
+                    background-color: brown !important;
+                }
+                .color-red {
+                    background-color: red !important;
+                }
+                .color-yellow {
+                    background-color: yellow !important;
+                }
+                .color-orange {
+                    background-color: orange !important;
+                }
+                .color-green {
+                    background-color: green !important;
+                }
+                .color-blue {
+                    background-color: blue !important;
+                }
+                .color-violet {
+                    background-color: violet !important;
+                }
+                .color-grey {
+                    background-color: gray !important;
+                }
+                .color-white {
+                    background-color: white !important;
+                }
+                .color-Dorado {
+                    background-color: gold !important;
+                }
+                .color-Plata {
+                    background-color: #C0C0C0 !important;
+                }
+            </style>
+            <tr>
+                
+                <td class="color-{{datos.color1}}">{{datos.color1}}</td>
+                <td class="color-{{datos.color2}}">{{datos.color2}}</td>
+                <td class="color-{{datos.color3}}">{{datos.color3}}</td>
+                <td class="color-{{textoTolerancia}}">{{datos.tolerancia}}</td>
+                <td>{{result.valor}}</td>
+                <td>{{result.valorMax}}</td>
+                <td>{{result.valorMin}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{%endblock%}
