@@ -1,0 +1,5 @@
+{"red": "rojo"}
+{"green": "verde"}
+{"blue": "azul"}
+{"flower": "flor"}
+{"shoes": "zapatos"}

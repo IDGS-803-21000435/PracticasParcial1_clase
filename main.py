@@ -2,6 +2,8 @@ from flask import Flask, render_template, request
 import formDistancia
 import math
 import formResistencia
+import formDiccionario
+import diccionario
 
 app = Flask(__name__)
 
@@ -233,6 +235,41 @@ def operacionesBasicas():
         </form>
         '''
 
+@app.route("/diccionario")
+def indexDiccionario():
+    form_diccionario = formDiccionario.diccionario_form(request.form)
+        
+    return render_template('indexDiccionario.html', form = form_diccionario)
+
+@app.route('/diccionario/guardar', methods=["GET","POST"])
+def guardarDiccionario():
+    if request.method == "POST":
+        form_diccionario = formDiccionario.diccionario_form(request.form)
+        ing = form_diccionario.ingles.data
+        es = form_diccionario.español.data
+        
+        diccionario.guardar(ing, es)
+        return render_template('indexDiccionario.html', form = form_diccionario)
+    else:
+        print("no entro")
+
+
+@app.route('/diccionario/buscar', methods = ["GET","POST"])
+def buscarDiccionario():
+    if request.method == "POST":
+        form_diccionario = formDiccionario.diccionario_form(request.form)
+        buscar = form_diccionario.buscar.data
+        traduccion = form_diccionario.radio.data
+        
+        if traduccion == 'español':
+            print('es')
+            valor = diccionario.buscar_valor(buscar)
+        elif traduccion == 'ingles':
+            print('ing')
+            valor = diccionario.buscar_key(buscar)
+        
+        
+        return render_template('indexDiccionario.html', form = form_diccionario, valorEncontrado = valor)
 
 if __name__ =="__main__":
     app.run(debug = True)

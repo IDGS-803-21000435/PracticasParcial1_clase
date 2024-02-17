@@ -1,0 +1,60 @@
+{% extends 'layoutDiccionario.html' %}
+
+{% block content %}
+
+{% import "_macroDiccionario.html" as miMacro %}
+
+<h1 class="m-3" style="text-align: center;">
+    Resistencia
+</h1>
+
+<div class="row">
+    <div class="row p-2">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title text-center">Ingles - Español</h2>
+                </div>
+                <div class="card-body text-center">
+                    <form action="/diccionario/guardar" method="post">
+                        <div class="row">
+                            <div class="col">
+                                {{miMacro.render_field(form.ingles)}}
+                            </div>
+                            <div class="col">
+                                {{miMacro.render_field(form.español)}}
+                            </div>
+                        </div>
+                        <input class="btn btn-dark m-3" type="submit" name="btn1" value="Guardar">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row p-2">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title text-center">Traduccion</h2>
+                </div>
+                <div class="card-body text-center">
+                    <form action="/diccionario/buscar" method="post">
+                        <div class="row">
+                            <div class="col">
+                                {{miMacro.render_field(form.buscar)}}
+                            </div>
+                            <div class="col">
+                                <label for=""> Resultado: {{valorEncontrado}}</label>
+                            </div>
+                            <div class="col">
+                                {{miMacro.render_field(form.radio)}}
+                            </div>
+                        </div>
+                        <input class="btn btn-dark m-3" type="submit" name="btn2" value="Buscar">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}
